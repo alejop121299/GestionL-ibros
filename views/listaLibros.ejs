@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Libros</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="btn btn-primary">Agregar Libro</a>    
+        <h1>Lista de Libros</h1>
+        <ul class="list-group">
+            <% libros.forEach(libro => { %>
+                <li class="list-group-item">
+                    <p><strong>Titulo:</strong> <%= libro.titulo %></p>
+                    <p><strong>Autor:</strong> <%= libro.autor %></p>
+                    <p><strong>Publicación:</strong> <%= libro.publicado %></p>
+                    <p><strong>Estado:</strong> <%= libro.estado %> </p>
+                    <form action="/libros/<%= libro._id %>?_method=DELETE" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                    <form action="/libros/<%= libro._id %>/editar" method="GET" style="display: inline;">
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
